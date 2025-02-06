@@ -12,7 +12,7 @@ resource "aws_apprunner_service" "this" {
     dynamic "authentication_configuration" {
       for_each = var.configuration_type == "CODE" ? [""] : []
       content {
-        connection_arn = aws_apprunner_connection.this[0].arn
+        connection_arn = var.connection_arn
       }
     }
 

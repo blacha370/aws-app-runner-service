@@ -1,14 +1,20 @@
 # aws-apprunner-service-module
 ## Table of Contents
+- [Examples](#examples)
 - [Resources](#resources)
 - [Inputs](#inputs)
 - [Outputs](#outputs)
+
+## Examples
+- [Code](https://github.com/blacha370/aws-app-runner-service/tree/main/examples/code)
+- [Code with repository configuration](https://github.com/blacha370/aws-app-runner-service/tree/main/examples/code)
+- [ECR Private](https://github.com/blacha370/aws-app-runner-service/tree/main/examples/ecr)
+- [ECR Public](https://github.com/blacha370/aws-app-runner-service/tree/main/examples/ecr_public)
 
 ## Resources
 | Name | Type |
 |------|------|
 | aws_apprunner_auto_scaling_configuration_version.this | resource |
-| aws_apprunner_connection.this | resource |
 | aws_apprunner_custom_domain_association.this | resource |
 | aws_apprunner_observability_configuration.this | resource |
 | aws_apprunner_service.this | resource |
@@ -29,6 +35,7 @@
 | branch | Branch name maps to a specific version. App Runner uses the most recent commit to the branch | string | `""` | no |
 | build_command | Command App Runner runs to build your application | string | `""` | no |
 | configuration_source | Source of the App Runner configuration. Valid values: `["REPOSITORY", "API"]`. | string | `""` | no |
+| connection_arn | ARN of the App Runner connection that enables the App Runner service to connect to a source repository | string | `""` | no |
 | directory | The path of the directory that stores source code and configuration files. The build and start commands also execute from here. The path is absolute from root and, if not specified, defaults to the repository root | string | `""` | no |
 | repository_url | Location of the repository that contains the source code | string | `""` | no |
 | runtime | Runtime environment type for building and running an App Runner service. Represents a programming language runtime. Valid values: `["PYTHON_3", "NODEJS_12", "NODEJS_14", "NODEJS_16", "CORRETTO_8", "CORRETTO_11", "GO_1", "DOTNET_6, "PHP_81, "RUBY_31"]` | string | `""` | no |
@@ -61,7 +68,6 @@
 | Name | Description |
 |------|-------------|
 | auto_scaling_configuration_arn | ARN of the App Runner AutoScaling Configuration Version | 
-| connection_arn | ARN of the App Runner Connection |
 | custom_domain_association_id | Id of the App Runner Custom Domain association |
 | certificate_validation_records | A set of certificate CNAME records used for this domain name |
 | observability_configuration_arn | ARN of the App Runner Observability Configuration |

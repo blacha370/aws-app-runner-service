@@ -93,6 +93,16 @@ variable "configuration_source" {
   }
 }
 
+variable "connection_arn" {
+  type    = string
+  default = ""
+
+  validation {
+    condition     = var.configuration_type == "IMAGE" || length(var.connection_arn) != 0
+    error_message = "Valid connection_arn cannot be empty"
+  }
+}
+
 variable "directory" {
   type    = string
   default = ""
@@ -113,7 +123,7 @@ variable "runtime" {
   default = ""
 
   validation {
-    condition     = var.configuration_type == "IMAGE" || contains(["PYTHON_3", "NODEJS_12", "NODEJS_14", "NODEJS_16", "CORRETTO_8", "CORRETTO_11", "GO_1", "DOTNET_6", "PHP_81", "RUBY_31"], var.runtime)
+    condition     = var.configuration_type == "IMAGE" || var.configuration_source == "REPOSITORY" || contains(["PYTHON_3", "NODEJS_12", "NODEJS_14", "NODEJS_16", "CORRETTO_8", "CORRETTO_11", "GO_1", "DOTNET_6", "PHP_81", "RUBY_31"], var.runtime)
     error_message = "Valid runtime values are [\"PYTHON_3\", \"NODEJS_12\", \"NODEJS_14\", \"NODEJS_16\", \"CORRETTO_8\", \"CORRETTO_11\", \"GO_1\", \"DOTNET_6\", \"PHP_81\", \"RUBY_31\"]"
   }
 }
