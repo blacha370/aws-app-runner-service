@@ -51,7 +51,7 @@
 | enable_x_ray | Description | bool | `false` | no |
 | enable_ingress | Description | bool | `null` | no |
 | enable_vpc_egress | Description | bool | `false` | no |
-| ip_address_type | App Runner provides you with the option to choose between Internet Protocol version 4 (IPv4) and dual stack (IPv4 and IPv6) for your incoming public network configuration. Valid values: `["IPV4", "DUAL_STACK"]`. | string | `""` | no |
+| ip_address_type | App Runner provides you with the option to choose between Internet Protocol version 4 (IPv4) and dual stack (IPv4 and IPv6) for your incoming public network configuration. Valid values: `["IPV4", "DUAL_STACK"]`. | string | `"IPV4"` | no |
 | security_groups | List of IDs of security groups that App Runner should use for access to AWS resources under the specified subnets. If not specified, App Runner uses the default security group of the Amazon VPC | list(string) | `[]` | no |
 | subnets | List of IDs of subnets that App Runner should use when it associates your service with a custom Amazon VPC. Specify IDs of subnets of a single Amazon VPC | list(string) | `[]` | no |
 | domain_name | Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com` | string | `""` | no |
@@ -62,7 +62,7 @@
 |------|-------------|
 | auto_scaling_configuration_arn | ARN of the App Runner AutoScaling Configuration Version | 
 | connection_arn | ARN of the App Runner Connection |
-| custom_domain_association_arn | ARN of the App Runner Custom Domain association |
+| custom_domain_association_id | Id of the App Runner Custom Domain association |
 | certificate_validation_records | A set of certificate CNAME records used for this domain name |
 | observability_configuration_arn | ARN of the App Runner Observability Configuration |
 | service_arn | ARN of the App Runner Service |

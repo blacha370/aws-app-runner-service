@@ -127,7 +127,7 @@ variable "access_role_arn" {
   default = ""
 
   validation {
-    condition     = var.configuration_type == "CODE" ||  var.image_repository_type == "ECR_PUBLIC" || var.image_repository_type == "ECR" && length(var.access_role_arn) != 0
+    condition     = var.configuration_type == "CODE" || var.image_repository_type == "ECR_PUBLIC" || var.image_repository_type == "ECR" && length(var.access_role_arn) != 0
     error_message = "Valid access_role_arn cannot be empty with \"ECR\" image_repository_type"
   }
 }
@@ -305,7 +305,7 @@ variable "enable_vpc_egress" {
 
 variable "ip_address_type" {
   type    = string
-  default = ""
+  default = "IPV4"
 }
 
 variable "security_groups" {
